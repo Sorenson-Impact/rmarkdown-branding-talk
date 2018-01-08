@@ -94,3 +94,38 @@ summary(cars)
 ```{r, out.width = "100%"}
 include_graphics("images/cars_slide.png")
 ```
+
+
+# Branding a Word Doc
+
+
+## Example
+
+```{r, out.width = "99%"}
+include_graphics("images/SI_report_2.png")
+```
+
+
+## Translating Markdown to Word
+
+- Use R Markdown to create a Word document
+- Edit the Word styles you find there
+- Save this document as your style reference docx file
+- Format an Rmd report using the styles reference docx file
+
+http://rmarkdown.rstudio.com/articles_docx.html
+
+```{r, out.width="25%"}
+include_graphics("https://i.imgur.com/UfPLZxQ.gif")
+```
+
+
+## Useful Example: Page Breaks
+
+- Set up a docx template
+- Modify style ‘Heading 5’ :
+- Set the font color to ‘white’ (rather than ‘Automatic’).
+- Select the smallest font size (8 rather than 11).
+- Select ‘Page break before’ in the ‘Line and Page Breaks’ tab.
+
+https://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document/
