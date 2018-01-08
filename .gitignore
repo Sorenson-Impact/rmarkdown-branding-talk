@@ -25,7 +25,6 @@ vignettes/*.pdf
 /cache/
 /docx/
 */docx/
-*_files/
 # knitr output images
 /*figure-docx/
 *figure-docx/

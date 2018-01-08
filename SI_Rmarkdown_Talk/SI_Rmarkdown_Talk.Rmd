@@ -1,0 +1,96 @@
+---
+title: "Branding and Automating Your Work with R Markdown"
+author: "Sorenson Impact Center Data Science Team"
+date: "1/11/2018"
+output: 
+  ioslides_presentation:
+    logo: template_files/SI_mobius_logo_large_white.png
+    template: template_files/SI_ioslides.html
+    css: template_files/SI_styles.css
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+library(sorensonimpact)
+library(knitr)
+SI_ggplot_update()
+```
+
+<!-- Go to: http://rmarkdown.rstudio.com/ioslides_presentation_format.html#overview for info on how to customize individual slides (centering, changing colors, etc).  I can also create custom css if we want a couple versions of slide templates that can be called from within this document. - Jon -->
+
+<!-- The following is script for the footer. It must remain before the first slide: -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+<script>
+    $(document).ready(function() {
+    $('slide:not(.title-slide, .backdrop, .segue)').append('<footer></footer>');    
+    $('footer').attr('label', 'Draft -- Do not circulate');
+  })
+</script>
+<style>
+  footer:after {
+    font-size: 12pt;
+    content: attr(label);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 60px;
+    right: 0;
+    text-align:left;
+    bottom: 20px;
+    line-height: 1.9;
+    display: block;
+  }
+</style>
+<!-- End Footer -->
+
+## The Sorenson Impact Data Team
+
+```{r, out.width = "100%"}
+include_graphics("images/SI_data_team.png")
+```
+
+
+## What We Will Cover
+
+- Rmarkdown Refresher
+- Branding .docx Reports
+- Ioslides
+- Packaging Your Brand
+- Automating with Knitr 
+
+
+## Rmarkdown Refresher
+
+- Extension of 2004 invention by John Gruber and Aaron Swartz
+- Use multiple languages including R, Python, and SQL.
+- Output formats include HTML, PDF, MS Word, Beamer, HTML5 slides, Tufte-style handouts, books, dashboards, shiny applications, scientific articles, websites, and more.
+
+
+## The Precursor to Notebooks
+
+```{r, out.width = "80%"}
+include_graphics("images/Ipython.png")
+```
+
+
+## Problems Rmarkdown Solves
+
+- Increases readability
+- Combines code and output
+- Version control!!!
+- http://danielphadley.com/Jupyter-to-Rmarkdown/
+
+
+## Slide with R Output
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
+
+## The Last Slide 
+
+```{r, out.width = "100%"}
+include_graphics("images/cars_slide.png")
+```
