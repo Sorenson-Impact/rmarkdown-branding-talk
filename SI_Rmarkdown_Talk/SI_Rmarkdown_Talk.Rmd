@@ -66,6 +66,24 @@ include_graphics("images/SI_data_team.png")
 - Use multiple languages including R, Python, and SQL.
 - Output formats include HTML, PDF, MS Word, Beamer, HTML5 slides, Tufte-style handouts, books, dashboards, shiny applications, scientific articles, websites, and more.
 
+```{r, out.width="40%", fig.align="center"}
+include_graphics("http://rmarkdown.rstudio.com/images/bandThree2.png")
+```
+
+
+## View from RStudio
+
+```{r, out.width = "100%"}
+include_graphics("images/cars_slide.png")
+```
+
+
+## The Product
+
+```{r cars, echo = TRUE}
+summary(cars)
+```
+
 
 ## The Precursor to Notebooks
 
@@ -78,22 +96,9 @@ include_graphics("images/Ipython.png")
 
 - Increases readability
 - Combines code and output
+- Facilitated by RStudio
 - Version control!!!
 - http://danielphadley.com/Jupyter-to-Rmarkdown/
-
-
-## Slide with R Output
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-
-## The Last Slide 
-
-```{r, out.width = "100%"}
-include_graphics("images/cars_slide.png")
-```
 
 
 # Branding a Word Doc
@@ -129,3 +134,51 @@ include_graphics("https://i.imgur.com/UfPLZxQ.gif")
 - Select ‘Page break before’ in the ‘Line and Page Breaks’ tab.
 
 https://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document/
+
+
+## Branding Images
+
+```{r, out.width = "90%"}
+include_graphics("images/SLC Traffic Stops to Drug Incidents (Rio Grande).png")
+```
+
+
+## Branding Images with Magick
+
+```{r, out.width = "80%"}
+include_graphics("http://danielphadley.com/images/Cars_Travolta.gif")
+```
+
+
+## Branding Images with Magick
+
+```{r, out.width = "80%"}
+include_graphics("images/hammer.gif")
+```
+
+
+## Branding Images with Magick
+
+```{r, eval = FALSE, echo=TRUE}
+# Our function in Pseudocode
+
+SI_ggsave <- function(){
+  
+  ggsave(lastplot)
+  
+  if(add_logo){
+    
+    logo <- image_read("~/ourlogo.png") %>% 
+      #make the width of the logo match the width of the plot
+      image_crop(paste0(pwidth, "x0+0+0"))
+    
+    # The final version is stacked on top of the sorenson logo
+    final_plot <- image_append(c(lastplot, logo), stack = TRUE)
+    # And then we overwrite the standard ggsave call
+    image_write(final_plot, filename)
+  }
+}
+```
+
+
+# Packaging Your Brand
