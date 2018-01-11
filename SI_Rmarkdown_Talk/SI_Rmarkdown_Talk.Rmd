@@ -14,7 +14,6 @@ knitr::opts_chunk$set(echo = FALSE)
 
 library(sorensonimpact)
 library(knitr)
-si_ggplot_theme_update()
 ```
 
 <!-- Go to: http://rmarkdown.rstudio.com/ioslides_presentation_format.html#overview for info on how to customize individual slides (centering, changing colors, etc).  I can also create custom css if we want a couple versions of slide templates that can be called from within this document. - Jon -->
@@ -55,7 +54,6 @@ include_graphics("images/SI_data_team.png")
 
 - Rmarkdown Refresher
 - Branding .docx Reports
-- Ioslides
 - Packaging Your Brand
 - Automating with Knitr 
 
@@ -111,6 +109,28 @@ include_graphics("images/SI_report_2.png")
 ```
 
 
+## Example
+<div class = "column-2-left">
+
+```{r, eval = FALSE, echo=TRUE}
+##### Pagebreak
+
+# Overview
+The raw data comes from ...
+
+```
+
+</div>
+
+<div class = "column-2-right">
+
+```{r}
+include_graphics("images/SI_report_1.png")
+```
+
+</div>
+
+
 ## Translating Markdown to Word
 
 - Use R Markdown to create a Word document
@@ -134,6 +154,28 @@ include_graphics("https://i.imgur.com/UfPLZxQ.gif")
 - Select ‘Page break before’ in the ‘Line and Page Breaks’ tab.
 
 https://datascienceplus.com/r-markdown-how-to-insert-page-breaks-in-a-ms-word-document/
+
+
+## Example
+<div class = "column-2-left">
+
+```{r, eval = FALSE, echo=TRUE}
+##### Pagebreak
+
+# Overview
+The raw data comes from ...
+
+```
+
+</div>
+
+<div class = "column-2-right">
+
+```{r}
+include_graphics("images/SI_report_1.png")
+```
+
+</div>
 
 
 ## Branding Images
@@ -274,3 +316,85 @@ si_draft_full_report <- function(file) {
 ## Nptes
 Describe package structure
 Redo video with large font
+
+
+# Packaging Your Brand
+
+
+# Automating Your Work
+
+
+## An Old Method: Knitting to HTML
+
+```{r, out.width = "99%"}
+include_graphics("images/dashboard.png")
+```
+
+http://danielphadley.com/How-To-Dashboard-R/
+  
+  
+  ## An Old Method: Knitting to HTML
+  
+```{r, eval = FALSE, echo=TRUE}
+<!DOCTYPE html>
+  
+  <script>
+  $(function() {
+    $('#container').highcharts({
+      xAxis: {
+        categories: [<!--rinline I(shQuote(dates)) -->]
+      },
+      series: [{
+        name: 'Tokyo',
+        data: [<!--rinline I(Tokyo) -->]
+      }, {
+        name: 'London',
+        data: [<!--rinline I(London) -->]
+      }]
+    });
+  });  
+</script>
+```
+
+
+## Automating is Easy Now
+
+```{r, eval = FALSE, echo=TRUE}
+for (county in unique(utah$County)) {
+  try(render('./county_report.Rmd',
+             output_file = paste(county, "County Report.docx"),
+             output_dir = "./County_Reports/"))
+}
+```
+
+
+## A New Method 
+
+Create a script that 
+
+- loads data (e.g, from Google Sheets)
+- renders a report from an .Rmd 
+- saves the output (e.g., an HTML dashboard)
+- emails the result
+
+Automate the Script
+
+- Windows task manager OR
+- Cron (e.g., on a Raspberry Pi)
+
+https://www.r-bloggers.com/scheduling-r-markdown-reports-via-email/
+
+
+## Best Practices
+
+- Many use .R for analysis and .Rmd for presentation
+- Name your chunks
+- Create templates
+
+
+## To Sum(presentation)
+
+- Rmarkdown notebooks turn code into product easily
+- With a little work, you can get a custom style
+- With a little more work, you can make a package
+- It is easier than ever to automate this
