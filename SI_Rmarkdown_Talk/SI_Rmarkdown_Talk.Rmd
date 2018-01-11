@@ -163,7 +163,7 @@ The raw data comes from ...
 
 <div class = "column-2-right">
 
-```{r}
+```{r, out.width = "100%"}
 include_graphics("images/SI_report_1.png")
 ```
 
@@ -220,7 +220,7 @@ si_ggsave <- function(){
 
 ## Customizations Add Up
 <div class = "column-2-left">
-Setup chunk: over 100 lines
+Setup chunk: over <B>100</B> lines
 
 - Load libraries
 - Set knitr/rmarkdown options
@@ -231,17 +231,22 @@ Setup chunk: over 100 lines
 </div>
 
 <div class = "column-2-right">
-```{r}
+```{r, out.width = "80%", fig.align="center"}
 include_graphics("images/setup chunk.png")
 ```
 </div>
 
 ## Goals
+Part 1
+
 - Reduce setup chunk
-- Effortless creation of new RMarkdown documents
-- Single-source templates that upgrade easily
 - Eliminate working directory headaches
 - Corral custom functions
+
+Part 2
+
+- Effortless creation of new RMarkdown documents
+- Single-source templates that upgrade easily
 
 ## Requirements
 - System-independent
@@ -249,12 +254,20 @@ include_graphics("images/setup chunk.png")
 - Distributable / usable outside the core data team
 - Future-proof
 
+## Package Structure
+- Code (R/)
+- Package metadata (DESCRIPTION)
+- Object documentation (man/)
+- Namespaces (NAMESPACE)
+- Data (data/)
+- Installed files (inst/)
+
 ## Reduce setup chunk
-- Move all settings into broad "apply_settings()" type functions
-- Move all function definitions into standard package system
+Move all settings into broad "apply_settings()" type functions
 
 ```{r, eval = F, echo = T}
-si_ggplot_theme_update <- function() {
+si_ggplot_theme_apply <- function() {
+  
   ggplot2::update_geom_defaults("bar", list(fill = si_design$pacific))
   ggplot2::update_geom_defaults("smooth", list(
     colour = si_design$pacific, 
@@ -265,7 +278,39 @@ si_ggplot_theme_update <- function() {
   ggplot2::update_geom_defaults("col", list(fill = si_design$pacific))
 
   ggplot2::theme_set(ggplot2::theme_minimal())
+}
 ```
+
+## Reduce setup chunk
+Move all function definitions into standard package system
+
+```{r, eval = F, echo = T}
+#' Extract duplicate rows
+#' @description Extract all rows with duplicated values in the given columns
+#' @importFrom magrittr "%>%"
+#' @param ... Columns to evaluate for duplication. Works via \code{group_by()}.
+#' @return Filtered dataframe with duplicates in given columns
+#' @examples
+#' mtcars %>% duplicates(mpg)
+#' @export
+duplicates <- function(data, ...) {
+  data %>%
+    group_by_(.dots = lazyeval::lazy_dots(...)) %>%
+    filter(n() > 1) %>%
+    ungroup() %>%
+    arrange_(.dots = lazyeval::lazy_dots(...))
+}
+```
+
+## Reduce setup chunk
+Added benefit of help documentation
+```{r, echo = T, eval = F}
+?duplicates
+```
+```{r, out.width = "60%", fig.align="center"}
+include_graphics("images/duplicates help.png")
+```
+
 
 ## Easy Creation of New Rmarkdown
 In one function:
@@ -275,40 +320,48 @@ In one function:
 - Copy template files from package (more on this momentarily)
 - Open new document in RStudio editor
 
+## Package Structure
+- Code (R/)
+- Package metadata (DESCRIPTION)
+- Object documentation (man/)
+- Namespaces (NAMESPACE)
+- Data (data/)
+- Installed files (inst/)
+
 ## Using a Package for Template Storage
-- inst/ dir in package can hold anything
-- Contents are copied to local libraries/package dir on package install/update
+- <B>inst/</B> dir in package can hold anything
+- Contents are copied to local R/library/package dir on package install/update
 - Location of local files is queryable with base R function
-```{r, out.width="115%", fig.align="center"}
-include_graphics("images/template_flowchart.png")
+```{r, out.width="100%", fig.align="center"}
+include_graphics("images/pkg_flowchart_2.png")
 ```
 
 ## Draft Function
 ```{r, eval = FALSE, echo=TRUE}
 # Our draft function in Pseudocode
-
-si_draft_full_report <- function(file) {
-  if(empty(dirname(file))) { 
+si_draft_full_report <- function(file) { 
+  
+  if(empty(dirname(file))) { #Create dir if not provided
     file <- file.path(default_dir, file)
   }
 
+  if(tools::file_ext(file) != "Rmd") { #Fix the capitalization of Rmd
+    message("Daniel you messed up the capitalization again. Setting extension to .Rmd")
+    file <- paste0(tools::file_path_sans_ext(file), ".Rmd")
+  }
   rmarkdown::draft(file = file,
                    template = "si_full_report",
                    package = "sorensonimpact",
                    edit = F)
 
-  file.edit(file)
+  file.edit(file) #Open immediately in Rstudio editor
 }
 ```
 
 ## Draft Function in Action
 <video controls = "controls" width = "800">
-  <source src = "images/si_draft_presentation().mp4" type = "video/mp4" />
+  <source src = "images/draft functions large.mp4" type = "video/mp4" />
 </video>
-
-## Nptes
-Describe package structure
-Redo video with large font
 
 
 # Automating Your Work
