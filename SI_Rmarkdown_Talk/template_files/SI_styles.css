@@ -52,3 +52,31 @@ slides > slide:not(.nobackground):before {
   height: 60px;
   background-size: 60px 60px;
 }
+
+
+/* These are div styles for multi-column layouts */
+  .column-3-left{
+    float: left;
+    width: 33%;
+    text-align: left;
+  }
+  .column-3-center{
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+  }
+  .column-3-right{
+    float: right;
+    width: 33%;
+    text-align: right;
+  }
+    .column-2-left{
+    float: left;
+    width: 50%;
+    text-align: left;
+  }
+  .column-2-right{
+    float: right;
+    width: 50%;
+    text-align: right;
+  }

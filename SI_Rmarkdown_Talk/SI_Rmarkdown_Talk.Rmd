@@ -14,7 +14,7 @@ knitr::opts_chunk$set(echo = FALSE)
 
 library(sorensonimpact)
 library(knitr)
-SI_ggplot_update()
+si_ggplot_theme_update()
 ```
 
 <!-- Go to: http://rmarkdown.rstudio.com/ioslides_presentation_format.html#overview for info on how to customize individual slides (centering, changing colors, etc).  I can also create custom css if we want a couple versions of slide templates that can be called from within this document. - Jon -->
@@ -24,7 +24,7 @@ SI_ggplot_update()
 <script>
     $(document).ready(function() {
     $('slide:not(.title-slide, .backdrop, .segue)').append('<footer></footer>');    
-    $('footer').attr('label', 'Draft -- Do not circulate');
+    $('footer').attr('label', 'Sorenson Impact Center');
   })
 </script>
 <style>
@@ -162,7 +162,7 @@ include_graphics("images/hammer.gif")
 ```{r, eval = FALSE, echo=TRUE}
 # Our function in Pseudocode
 
-SI_ggsave <- function(){
+si_ggsave <- function(){
   
   ggsave(lastplot)
   
@@ -182,3 +182,95 @@ SI_ggsave <- function(){
 
 
 # Packaging Your Brand
+
+## Customizations Add Up
+<div class = "column-2-left">
+Setup chunk: over 100 lines
+
+- Load libraries
+- Set knitr/rmarkdown options
+- Set directories
+- Define SI color names
+- Customize ggplot themes and geoms
+- Define custom functions
+</div>
+
+<div class = "column-2-right">
+```{r}
+include_graphics("images/setup chunk.png")
+```
+</div>
+
+## Goals
+- Reduce setup chunk
+- Effortless creation of new RMarkdown documents
+- Single-source templates that upgrade easily
+- Eliminate working directory headaches
+- Corral custom functions
+
+## Requirements
+- System-independent
+- Git method independent
+- Distributable / usable outside the core data team
+- Future-proof
+
+## Reduce setup chunk
+- Move all settings into broad "apply_settings()" type functions
+- Move all function definitions into standard package system
+
+```{r, eval = F, echo = T}
+si_ggplot_theme_update <- function() {
+  ggplot2::update_geom_defaults("bar", list(fill = si_design$pacific))
+  ggplot2::update_geom_defaults("smooth", list(
+    colour = si_design$pacific, 
+    fill = si_design$arctic, alpha = I(2/10)))
+  ggplot2::update_geom_defaults("point", list(
+    colour = si_design$pacific, 
+    fill = si_design$pacific))
+  ggplot2::update_geom_defaults("col", list(fill = si_design$pacific))
+
+  ggplot2::theme_set(ggplot2::theme_minimal())
+```
+
+## Easy Creation of New Rmarkdown
+In one function:
+
+- Name and create new file
+- Create ./templates subdir for supporting template files
+- Copy template files from package (more on this momentarily)
+- Open new document in RStudio editor
+
+## Using a Package for Template Storage
+- inst/ dir in package can hold anything
+- Contents are copied to local libraries/package dir on package install/update
+- Location of local files is queryable with base R function
+```{r, out.width="115%", fig.align="center"}
+include_graphics("images/template_flowchart.png")
+```
+
+## Draft Function
+```{r, eval = FALSE, echo=TRUE}
+# Our draft function in Pseudocode
+
+si_draft_full_report <- function(file) {
+  if(empty(dirname(file))) { 
+    file <- file.path(default_dir, file)
+  }
+
+  rmarkdown::draft(file = file,
+                   template = "si_full_report",
+                   package = "sorensonimpact",
+                   edit = F)
+
+  file.edit(file)
+}
+```
+
+## Draft Function in Action
+<video controls = "controls" width = "800">
+  <source src = "images/si_draft_presentation().mp4" type = "video/mp4" />
+</video>
+
+## Nptes
+Describe package structure
+Redo video with large font
