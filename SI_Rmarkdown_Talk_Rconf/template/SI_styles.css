@@ -1,0 +1,85 @@
+/*
+SI Colors:
+pacific = "#1D4F53"
+atlantic = "#18303C"
+carbon = "#6d6f71"
+granite = "#bcbdbf"
+silver = "#e6e7e7"
+arctic = "#107D7F"
+*/
+
+h2 {
+	color: #e6e7e7;
+	background: red; /* For browsers that do not support gradients */
+ 	background: -webkit-linear-gradient(left, #1D4F53 , rgba(29,79,83,.8)); /* For Safari 5.1 to 6.0 */
+	background: -o-linear-gradient(right, #1D4F53, rgba(29,79,83,.8)); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(right, #1D4F53, rgba(29,79,83,.8)); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(to right, #1D4F53 , rgba(29,79,83,.8)); /* Standard syntax */
+  -webkit-border-radius: 3px 10px 10px 3px;
+  -moz-border-radius: 3px 10px 10px 3px;
+  -ms-border-radius: 3px 10px 10px 3px;
+  -o-border-radius: 3px 10px 10px 3px;
+  border-radius: 3px 10px 10px 3px;
+
+}
+
+
+/* This is how you customize the logo bar on the title slide */
+/*
+.gdbar img {
+ width: 85px;
+ height: 85px;
+ position: absolute;
+ right: 0;
+ margin: 8px 15px;
+}
+*/
+
+aside.gdbar {
+  /*width: 400px !important;
+  height: 170px !important;*/
+  background:#1D4F53;
+  /*background: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, #1D4F53), color-stop(100%, #e6e6e6)) no-repeat;
+  background: -webkit-linear-gradient(left, #1D4F53, #e6e6e6) no-repeat;
+  background: -moz-linear-gradient(left, #1D4F53, #e6e6e6) no-repeat;
+  background: -o-linear-gradient(left, #1D4F53, #e6e6e6) no-repeat;
+  background: linear-gradient(left, #1D4F53, #e6e6e6) no-repeat; */
+}
+
+/* This is for the content slides */
+slides > slide:not(.nobackground):before {
+  width: 60px;
+  height: 60px;
+  background-size: 60px 60px;
+}
+
+/* These are div styles for multi-column layouts */
+/* In slide, apply with: */
+/* <div class="column-3-left"> */
+/* (content) */
+/* </div> */
+  .column-3-left{
+    float: left;
+    width: 33%;
+    text-align: left;
+  }
+  .column-3-center{
+    display: inline-block;
+    width: 33%;
+    text-align: center;
+  }
+  .column-3-right{
+    float: right;
+    width: 33%;
+    text-align: right;
+  }
+    .column-2-left{
+    float: left;
+    width: 50%;
+    text-align: left;
+  }
+  .column-2-right{
+    float: right;
+    width: 50%;
+    text-align: right;
+  }
