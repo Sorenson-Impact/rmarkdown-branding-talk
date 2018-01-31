@@ -43,12 +43,6 @@ library(knitr)
 </style>
 <!-- End Footer -->
 
-## The Sorenson Impact Data Team
-
-```{r, out.width = "100%"}
-include_graphics("images/SI_data_team.png")
-```
-
 
 ## What We Will Cover
 
@@ -69,20 +63,6 @@ include_graphics("http://rmarkdown.rstudio.com/images/bandThree2.png")
 ```
 
 
-## View from RStudio
-
-```{r, out.width = "100%", fig.align="center"}
-include_graphics("images/cars_slide.png")
-```
-
-
-## The Product
-
-```{r cars, echo = TRUE}
-summary(cars)
-```
-
-
 ## The Precursor to Notebooks
 
 ```{r, out.width = "75%", fig.align="center"}
@@ -92,7 +72,6 @@ include_graphics("images/Ipython.png")
 
 ## Problems Rmarkdown Solves
 
-- Increases readability
 - Combines code and output
 - Facilitated by RStudio (but no IDE required)
 - Version control!!!
