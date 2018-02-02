@@ -283,6 +283,30 @@ include_graphics("images/sorensonimpact_hexsticker.png")
 # Automating Your Work
 
 
+## An Old Method: Knitting to HTML
+  
+```{r, eval = FALSE, echo=TRUE}
+<!DOCTYPE html>
+  
+  <script>
+  $(function() {
+    $('#container').highcharts({
+      xAxis: {
+        categories: [<!--rinline I(shQuote(dates)) -->]
+      },
+      series: [{
+        name: 'Tokyo',
+        data: [<!--rinline I(Tokyo) -->]
+      }, {
+        name: 'London',
+        data: [<!--rinline I(London) -->]
+      }]
+    });
+  });  
+</script>
+```
+
+
 ## Automating is Easy Now
 
 ```{r, eval = FALSE, echo=TRUE}
