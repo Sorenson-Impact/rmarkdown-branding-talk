@@ -1,7 +1,7 @@
 ---
 title: "Branding and Automating Your Work with R Markdown"
-author: "Sorenson Impact Center Data Science Team"
-date: "2/1/2018"
+author: "Daniel Hadley & Jonathan Zadra"
+date: "Sorenson Impact Center"
 output: 
   ioslides_presentation:
     logo: template/SI_mobius_logo_large_white.png
