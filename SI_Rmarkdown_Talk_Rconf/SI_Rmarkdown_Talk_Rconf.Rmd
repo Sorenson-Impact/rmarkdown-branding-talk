@@ -202,9 +202,10 @@ Part 2
 
 - Effortless creation of new RMarkdown documents
 - Single-source templates that upgrade easily
+- Future proof / time-locked
 
 
-## Reduce setup chunk
+## Reduce Setup Chunk
 Move all settings into broad "apply_settings()" type functions
 
 ```{r, eval = F, echo = T}
@@ -224,23 +225,7 @@ si_ggplot_theme_apply <- function() {
 ```
 
 
-## Easy Creation of New Rmarkdown
-In one function:
-
-- Copy template files from package (more on this momentarily)
-- Create ./template subdir for supporting template files
-- Create new RMarkdown file based on template
-- Open new document in RStudio editor
-
-## Package Structure
-- Code (R/)
-- Package metadata (DESCRIPTION)
-- Object documentation (man/)
-- Namespaces (NAMESPACE)
-- Data (data/)
-- Installed files (inst/)
-
-## Using a Package for Template Storage
+## Easy Creation of Rmarkdown Template
 - <B>inst/</B> dir in package can hold anything
 - Contents are copied to local R/library/package dir on package install/update
 - Location of local files is queryable with base R function
