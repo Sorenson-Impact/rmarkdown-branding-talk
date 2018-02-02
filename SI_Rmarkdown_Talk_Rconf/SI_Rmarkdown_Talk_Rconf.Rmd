@@ -1,7 +1,7 @@
 ---
 title: "Branding and Automating Your Work with R Markdown"
-author: "Daniel Hadley & Jonathan Zadra"
-date: "Sorenson Impact Center"
+author: "Daniel Hadley (@danielphadley) & Jonathan Zadra (@JonathanZadra)"
+date: "http://rpubs.com/jzadra/rconf2018"
 output: 
   ioslides_presentation:
     logo: template/SI_mobius_logo_large_white.png
