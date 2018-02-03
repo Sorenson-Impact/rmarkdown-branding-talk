@@ -228,7 +228,7 @@ si_ggplot_theme_apply <- function() {
 ## Easy Creation of Rmarkdown Template
 - <B>inst/</B> dir in package can hold anything
 - Contents are copied to local R/library/package dir on package install/update
-- Location of local files is queryable with base R function
+- Current version copied to working dir on each create
 ```{r, out.width="100%", fig.align="center"}
 include_graphics("images/pkg_flowchart_2.png")
 ```
@@ -236,7 +236,7 @@ include_graphics("images/pkg_flowchart_2.png")
 ## Using a Package for Template Storage
 - <B>inst/</B> dir in package can hold anything
 - Contents are copied to local R/library/package dir on package install/update
-- Location of local files is queryable with base R function
+- Current version copied to working dir on each create
 ```{r, out.width="100%", fig.align="center"}
 include_graphics("images/pkg_flowchart_2_multiple.png")
 ```
